@@ -23,8 +23,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'y&_-i&kqkvt2w7zaf+&(#yeym#+#7f=z0t&igt($^50_$ls^ll'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True
-DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
+DEBUG = True
+#DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
 ALLOWED_HOSTS = ['safe-taiga-84360.herokuapp.com', '127.0.0.1']
 
@@ -61,7 +61,7 @@ ROOT_URLCONF = 'BZlab.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['inventory/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
