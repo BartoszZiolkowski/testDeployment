@@ -1,0 +1,21 @@
+{% extends "home.html" %}
+
+{% block content_logged_out %}
+<div class="text-center">
+        <h3>Dodawanie użytkownika
+
+        </h3>
+
+
+
+        <form action="{%url 'add-user' %}" method="post" class="form" >
+        {% csrf_token %}
+        {{form.as_ul}}
+                <input type="submit" class="btn btn-lg btn-primary" value="Wduś guzik!">
+        </form>
+
+<br><hr><br>
+{{message}}
+
+</div>
+{% endblock %}

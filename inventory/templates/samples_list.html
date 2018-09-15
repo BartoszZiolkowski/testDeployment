@@ -1,0 +1,71 @@
+{% extends "home.html" %}
+
+
+{% block content_logged_in %}
+
+        <h2 class="text-center">Próbki</h2>
+
+    <div class="search-label-icon text-center">
+    <form method="post" enctype="multipart/form-data">
+         {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Szukaj">
+
+        </form>
+
+    {{ message }}
+    </div>
+    <br>
+
+<div class="container text-center">
+<div class="col text-center">
+        <table class="table-responsive-sm table-hover table-bordered text-center table-striped">
+            <thead class="thead-dark">
+            <tr class="thead-dark">
+
+                <th>Kod próbki</th>
+                <th>Nazwa</th>
+                <th>Dostawca</th>
+                <th>Ilość</th>
+                <th>Masa [kg]</th>
+                <th>MSDS</th>
+                <th>TDS</th>
+                <th>Miejsce składowania</th>
+                <th>Data przyjęcia</th>
+                <th>Przyjmujący</th>
+                <th>Zdjęcie próbki</th>
+                <th>Kod kreskowy</th>
+
+            </tr>
+
+
+            </thead>
+
+                {% for sample in samples %}
+                <tr>
+                    <td>{{sample.sample_code}}</td>
+                    <td>
+                        <a href="/update_sample/{{sample.id}}">{{sample.name}}</a>
+                    </td>
+                    <td>{{sample.supplier.name}}</td>
+                    <td>{{sample.amount}}</td>
+                    <td>{{sample.mass}}</td>
+                    <td>{{sample.get_MSDS_display}}</td>
+                    <td>{{sample.get_TDS_display}}</td>
+                    <td>{{sample.get_location_display}}</td>
+                    <td>{{sample.date_received}}</td>
+                    <td>{{sample.user}}</td>
+                    <td><a href="/sample_photo/{{sample.id}}">Podgląd</a></td>
+                    <td><a href="/barcode/{{sample.id}}">Wyświetl</a></td>
+
+
+                    <td><a href="/delete_sample/{{sample.id}}">Usuń próbkę</a></td>
+                </tr>
+                {% endfor %}
+        </table>
+    </div>
+<a href="{% url 'add-sample' %}">Dodaj próbkę</a>
+    </div>
+
+{% endblock %}
+

@@ -1,0 +1,38 @@
+{% extends "home.html" %}
+
+{% block content_logged_in %}
+<div class="container-fluid text-center">
+        <h2>Dostawcy</h2>
+        <table class="table-responsive-sm table-hover table-bordered text-center table-striped">
+            <tr>
+
+                <th>Nazwa</th>
+                <th>Adres</th>
+                <th>Osoba kontaktowa</th>
+                <th>Email</th>
+                <th>Telefon</th>
+
+
+
+
+            </tr>
+                {% for supplier in suppliers %}
+                <tr>
+                    <td>
+
+                        <a href="/update_supplier/{{supplier.id}}">{{supplier.name}}</a>
+
+                    </td>
+                    <td>{{supplier.address}}</td>
+                    <td>{{supplier.contact_person}}</td>
+                    <td>{{supplier.email}}</td>
+                    <td>{{supplier.telephone}}</td>
+
+
+                    <td><a href="/delete_supplier/{{supplier.id}}">Usuń dostawcę</a></td>
+                </tr>
+                {% endfor %}
+        </table>
+<br><a href="{% url 'add-supplier' %}">Dodaj dostawcę</a>
+</div>
+{% endblock %}

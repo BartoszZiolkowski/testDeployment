@@ -1,0 +1,10 @@
+{% extends "home.html" %}
+{% block content_logged_in %}
+
+    <form method="post"> {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Zapisz" />
+
+    </form>
+
+{% endblock %}

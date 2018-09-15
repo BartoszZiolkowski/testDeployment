@@ -1,0 +1,23 @@
+{% extends "home.html" %}
+
+
+{% block content_logged_out %}
+
+<h2 class="text-dark text-center">Login</h2>
+<ul>
+
+    {% if form %}
+        <form action="{%url 'login-form' %}" method="post" class="form-signin text-center">
+         {% csrf_token %}
+        {{form.as_ul}}
+
+        <input type="submit" class="" value="Wduś guzik!">
+
+
+{% endif %}
+
+            <br>
+            {{message}}
+</ul>
+
+{% endblock %}

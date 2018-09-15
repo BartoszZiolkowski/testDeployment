@@ -1,0 +1,18 @@
+{% extends "home.html" %}
+
+{% load static %}
+{% block content_logged_in %}
+
+        <h2 class="text-center">Photo of sample {{ sample.name }}</h2>
+
+
+<div class="container">
+<div >
+
+    <img src="{%static file.photo.url %}" class=" img-fluid max-width: 100%">
+{{file.photo.url}}
+    </div>
+    </div>
+<br><a href="{% url 'samples-view' %}">Lista próbek</a>
+{% endblock %}
+

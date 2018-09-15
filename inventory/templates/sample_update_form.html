@@ -1,0 +1,23 @@
+{% extends "home.html" %}
+
+
+{% block content_logged_in %}
+
+<h2>Edycja próbki</h2>
+
+
+
+        <form method="post" enctype="multipart/form-data" class="form text-center" action="{% url 'update-sample' pk %}">
+         {% csrf_token %}
+        {{form.as_ul}}
+
+        <input type="submit" class="btn btn-lg btn-primary btn-block" value="Zapisz zmiany">
+
+        </form>
+
+
+            <br>
+            {{error}}
+
+
+{% endblock %}

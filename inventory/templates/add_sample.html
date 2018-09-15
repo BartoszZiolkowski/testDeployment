@@ -1,0 +1,12 @@
+{% extends "home.html" %}
+{% load crispy_forms_tags %}
+{% block content_logged_in %}
+
+
+    <form method="post" enctype="multipart/form-data" class="form text-center"> {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" class="btn btn-lg btn-primary " value="Zapisz" />
+
+    </form>
+{{ message }}
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "home.html" %}
+
+
+{% block content_logged_in %}
+<div class="text-center">
+<h2>Change password</h2>
+
+
+
+        <form action="{% url 'edit-user' user_id %}" method="post" class="form">
+         {% csrf_token %}
+        {{form.as_ul}}
+
+        <input type="submit" value="Wduś guzik!" class="btn-primary btn">
+
+        </form>
+
+
+            <br>
+            {{error}}
+
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "home.html" %}
+
+
+{% block content_logged_in %}
+
+<h2>Edycja dostawcy</h2>
+
+
+
+        <form method="post">
+         {% csrf_token %}
+        {{form.as_ul}}
+
+        <input type="submit" value="Zapisz zmiany">
+
+        </form>
+
+
+            <br>
+            {{error}}
+
+
+{% endblock %}

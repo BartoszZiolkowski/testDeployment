@@ -1,0 +1,17 @@
+{% extends "home.html" %}
+
+{% load static %}
+{% block content_logged_in %}
+
+        <h2 class="text-center">Barcode for sample {{ sample.name }}</h2>
+
+
+<div class="container">
+<div >
+        <img src="{% static file.barcode.url %}" class=" img-fluid max-width: 100%">
+{{file.barcode.url}}
+    </div>
+    </div>
+<br><a href="{% url 'samples-view' %}">Lista próbek</a>
+{% endblock %}
+
