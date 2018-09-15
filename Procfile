@@ -1,0 +1,1 @@
+web: cd BZlab; gunicorn BZlab.wsgi --log-file -
