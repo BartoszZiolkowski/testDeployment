@@ -44,7 +44,7 @@ class Login(View):
                 login(request, userAuth)
                 logged_in = request.user.is_authenticated
 
-                return redirect('/home')
+                return redirect('/')
                     #render(request, 'home.html', {'data':userAuth})
             else: return render(request, 'login.html', {'form':form,
                                                         'message':'wrong data'})
@@ -147,14 +147,14 @@ class ChangeUserDataView(View):
 class AddSupplier(CreateView):
     model = Supplier
     fields = '__all__'
-    success_url = '/home'
+    success_url = '/'
 
 
 class UpdateSupplier(UpdateView):
     model = Supplier
     fields = '__all__'
     template_name_suffix = '_update_form'
-    success_url = '/home'
+    success_url = '/'
 
 
 class ViewSuppliers(View):
@@ -166,7 +166,7 @@ class ViewSuppliers(View):
 
 class DeleteSupplier(DeleteView):
     model = Supplier
-    success_url = '/home'
+    success_url = '/'
 
 
 

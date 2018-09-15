@@ -23,7 +23,7 @@ from inventory.views import HomeView, Login, Logout, AddUser, ChangeUserDataView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', HomeView.as_view(), name='home_view'),
+    path('', HomeView.as_view(), name='home_view'),
     url(r'^login', Login.as_view(), name='login-form'),
     url(r'^logout', Logout.as_view(), name='logout'),
     url(r'^add_user', AddUser.as_view(), name='add-user'),
