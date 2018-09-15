@@ -1,10 +1,17 @@
 {% extends "home.html" %}
 {% block content_logged_in %}
+    <h2 class="text-center">Dodaj dostawcę:</h2>
 
     <form method="post" class="text-center"> {% csrf_token %}
         {{form.as_p}}
         <input type="submit" value="Zapisz" />
 
+
+
     </form>
+    <br>
+<div class="text-center">
+<a class="btn btn-lg btn-primary" href="{% url 'view-suppliers' %}">Lista dostawców</a>
+</div>
 
 {% endblock %}

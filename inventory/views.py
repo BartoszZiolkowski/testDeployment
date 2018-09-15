@@ -191,13 +191,17 @@ class AddSample(View):
             data['sample_code'] = sample_code
             data['user'] = request.user
             data['user_id'] = request.user.pk
-            """
-            filename = f'static/img/{sample_code}'
+
+            filename = f'inventory/static/img/{sample_code}'
+            database_filename = f'img/{sample_code}.svg'
+            print(filename)
+
             barcode = generate('code128', sample_code, output=filename)
-            PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
-            barcode_opened = open('static/img/', f'{filename}.svg')
-            data['barcode'] = barcode_opened
-            """
+
+
+
+            data['barcode'] = database_filename
+
 
             try:
                 new_sample = Sample.objects.create(**data)
@@ -296,14 +300,20 @@ class ViewSamples(View):
 class ViewSamplePhoto(View):
     def get(self, request,pk):
         file = Sample.objects.get(pk=pk)
-        return render(request, 'sample_photo.html', {'file':file})
-
+        try:
+            return render(request, 'sample_photo.html', {'file':file})
+        except Exception as e:
+            message = 'brak zdjęcia w bazie'
+            return render(request, 'sample_photo.html', {'message':message})
 class ViewSampleBarcode(View):
     def get(self, request, pk):
 
         barcode = Sample.objects.get(pk=pk)
-
-        return render(request, 'barcode.html', {'file':barcode})
+        try:
+            return render(request, 'barcode.html', {'file':barcode})
+        except Exception as e:
+            message = 'brak naklejki w bazie'
+            return render(request, 'barcode.html', {'message': message})
 
 
 

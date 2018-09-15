@@ -2,8 +2,10 @@
 
 {% block content_logged_in %}
 <div class="container-fluid text-center">
+
         <h2>Dostawcy</h2>
-        <table class="table-responsive-sm table-hover table-bordered text-center table-striped">
+
+        <table class="col table-responsive-sm table-hover table-bordered text-center table-striped">
             <tr>
 
                 <th>Nazwa</th>
@@ -33,6 +35,9 @@
                 </tr>
                 {% endfor %}
         </table>
+
 <br><a href="{% url 'add-supplier' %}">Dodaj dostawcę</a>
+
 </div>
+
 {% endblock %}

@@ -3,15 +3,20 @@
 {% load static %}
 {% block content_logged_in %}
 
-        <h2 class="text-center">Barcode for sample {{ sample.name }}</h2>
+        <h2 class="text-center">Naklejka dla próbki: {{ file.name }}</h2>
 
 
-<div class="container">
+<div class="container text-center">
 <div >
         <img src="{% static file.barcode.url %}" class=" img-fluid max-width: 100%">
+ <br>
+    {{ message }}
+    </div>
 {{file.barcode.url}}
+
+</div>
+<div class="text-center">
+    <a href="{% url 'samples-view' %}">Lista próbek</a>
     </div>
-    </div>
-<br><a href="{% url 'samples-view' %}">Lista próbek</a>
 {% endblock %}
 

@@ -44,7 +44,7 @@ class Sample(models.Model):
     location = models.CharField(choices=ROOMS, max_length=50, verbose_name='miejsce składowania')
     date_received = models.DateField(default=date.today, verbose_name='data przyjęcia')
     user = models.ForeignKey(User, on_delete=models.SET('deleted user'), verbose_name='podpis')
-    photo = models.ImageField(upload_to='img/')
+    photo = models.ImageField(upload_to='img/', blank=True)
     barcode = models.ImageField(upload_to='img/')
 
     def __str__(self):

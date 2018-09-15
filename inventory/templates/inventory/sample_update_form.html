@@ -3,11 +3,11 @@
 
 {% block content_logged_in %}
 
-<h2>Edycja próbki</h2>
+<h2 class="text-center">Edycja próbki:</h2>
 
 
 
-        <form method="post" enctype="multipart/form-data">
+        <form class="text-center" method="post" enctype="multipart/form-data">
          {% csrf_token %}
         {{form.as_ul}}
 
@@ -18,6 +18,8 @@
 
             <br>
             {{error}}
-
+<div class="text-center container-fluid">
+    <a href="{% url 'samples-view' %}">Lista próbek</a>
+    </div>
 
 {% endblock %}
