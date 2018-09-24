@@ -179,7 +179,7 @@ class AddSample(View):
 
     def post(self, request):
 
-        form = AddSampleForm(request.POST, request.FILES)
+        form = AddSampleForm(request.POST)
         if form.is_valid():
             print(form.cleaned_data)
 
@@ -191,17 +191,6 @@ class AddSample(View):
             data['sample_code'] = sample_code
             data['user'] = request.user
             data['user_id'] = request.user.pk
-
-            filename = f'inventory/static/img/{sample_code}'
-            database_filename = f'img/{sample_code}.svg'
-            print(filename)
-
-            barcode = generate('code128', sample_code, output=filename)
-
-
-
-            data['barcode'] = database_filename
-
 
             try:
                 new_sample = Sample.objects.create(**data)
@@ -218,7 +207,7 @@ class AddSample(View):
 
 class UpdateSample(UpdateView):
     model = Sample
-    fields = ['name', 'supplier', 'amount', 'mass', 'MSDS', 'TDS', 'location', 'date_received', 'photo' ]
+    fields = ['name', 'supplier', 'amount', 'mass', 'MSDS', 'TDS', 'location', 'date_received']
 
     template_name_suffix = '_update_form'
     success_url = '/samples_list'

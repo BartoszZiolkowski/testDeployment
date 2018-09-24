@@ -69,7 +69,7 @@ class AddSampleForm(forms.ModelForm):
     class Meta:
         model = Sample
         fields = '__all__'
-        exclude = ['sample_code', 'user', 'barcode']
+        exclude = ['sample_code', 'user']
 
 class SearchForm(forms.Form):
     search_term = forms.CharField(label='', max_length=200)
