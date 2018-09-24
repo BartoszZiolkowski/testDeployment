@@ -33,8 +33,7 @@
                 <th>Miejsce składowania</th>
                 <th>Data przyjęcia</th>
                 <th>Przyjmujący</th>
-                <th>Zdjęcie próbki</th>
-                <th>Kod kreskowy</th>
+
 
             </tr>
 
@@ -55,8 +54,7 @@
                     <td>{{sample.get_location_display}}</td>
                     <td>{{sample.date_received}}</td>
                     <td>{{sample.user}}</td>
-                    <td><a href="/sample_photo/{{sample.id}}">Podgląd</a></td>
-                    <td><a href="/barcode/{{sample.id}}">Wyświetl</a></td>
+
 
 
                     <td><a href="/delete_sample/{{sample.id}}">Usuń próbkę</a></td>

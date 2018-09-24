@@ -215,16 +215,7 @@ class AddSample(View):
 
         return render(request, 'add_sample.html', {'form': form,
                                                  'message': 'coś nie tak w formularzu'})
-"""
-class UpdateSample(View):
 
-    def get(self, request, pk):
-        sample = Sample.objects.get(pk=pk)
-        form = UpdateSampleForm(instance=sample)
-        return render(request, 'sample_update_form.html', {'form':form})
-
-
-"""
 class UpdateSample(UpdateView):
     model = Sample
     fields = ['name', 'supplier', 'amount', 'mass', 'MSDS', 'TDS', 'location', 'date_received', 'photo' ]
@@ -237,12 +228,6 @@ class DeleteSample(DeleteView):
     model = Sample
     success_url = '/samples_list'
 
-"""
-class AddSample(CreateView):
-    model = Sample
-    fields = '__all__'
-    success_url = '/home'
-"""
 
 
 
@@ -317,40 +302,9 @@ class ViewSampleBarcode(View):
 
 
 
-"""
-sample_code = models.CharField(max_length=128, unique=True, verbose_name='kod próbki')
-    name = models.CharField(max_length=500, verbose_name='nazwa')
-    supplier = models.ForeignKey(Supplier, on_delete=models.CASCADE, verbose_name='dostawca')
-    amount = models.IntegerField(verbose_name='ilość opakowań')
-    mass = models.DecimalField(decimal_places=1, max_digits=4, verbose_name='masa próbki w kg')
-    MSDS = models.BooleanField(choices=DOCUMENTS, verbose_name='dołączony MSDS?')
-    TDS = models.BooleanField(choices=DOCUMENTS, verbose_name='dołączony TDS?')
-    location = models.CharField(choices=ROOMS, max_length=50, verbose_name='miejsce składowania')
-    date_received = models.DateField(default=date.today, verbose_name='data przyjęcia')
-    user = models
-"""
-
-
-
 
 class ViewRecipes(View):
     def get(self, request):
 
         return HttpResponse('get')
 
-
-"""
-import barcode
-barcode.PROVIDED_BARCODES[u'code39', u'code128', u'ean', u'ean13', u'ean8', u'gs1', u'gtin', u'isbn', u'isbn10', u'isbn13', u'issn', u'jan', u'pzn', u'upc', u'upca']
-EAN = barcode.get_barcode_class('ean13')
-print(EAN)
-
-
-
-print(name)
-u'barcode_svg.svg'
-# with file like object
->>> fp = StringIO()
->>> generate('EAN13', u'5901234123457', writer=ImageWriter(), output=fp)
-
-"""
