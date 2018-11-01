@@ -18,8 +18,7 @@ from django.urls import path
 from django.conf.urls import url
 from django.contrib import admin
 from inventory.views import HomeView, Login, Logout, AddUser, ChangeUserDataView, AddSupplier, UpdateSupplier, \
-    DeleteSupplier, ViewSuppliers, ViewSamples, ViewRecipes, AddSample, DeleteSample, UpdateSample, ViewSamplePhoto, \
-    ViewSampleBarcode
+    DeleteSupplier, ViewSuppliers, ViewSamples, ViewRecipes, AddSample, DeleteSample, UpdateSample
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -38,8 +37,7 @@ urlpatterns = [
     url(r'^add_sample/', AddSample.as_view(), name='add-sample'),
     path('delete_sample/<pk>', DeleteSample.as_view(), name='delete-sample'),
     path('update_sample/<pk>', UpdateSample.as_view(), name='update-sample'),
-    path('sample_photo/<pk>', ViewSamplePhoto.as_view(), name='sample-photo'),
-    path('barcode/<pk>', ViewSampleBarcode.as_view(), name='barcode-view'),
+
 ]
 
 """
