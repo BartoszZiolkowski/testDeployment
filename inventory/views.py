@@ -92,7 +92,7 @@ class AddUser(View):
                                              email=form.cleaned_data['email'])
 
 
-                    return redirect('/home')
+                    return redirect('/')
 
                 else:
                     return render(request, 'add_user.html', {'form': form,
@@ -130,7 +130,7 @@ class ChangeUserDataView(View):
                 user.save()
 
 
-                return redirect('/home')
+                return redirect('/')
             else:
                 return render(request, 'change_user_data.html', {'form': form,
                                                                 'error': 'password not the same',
@@ -192,6 +192,7 @@ class AddSample(View):
             data['user'] = request.user
             data['user_id'] = request.user.pk
 
+
             try:
                 new_sample = Sample.objects.create(**data)
 
@@ -206,8 +207,11 @@ class AddSample(View):
                                                  'message': 'coś nie tak w formularzu'})
 
 class UpdateSample(UpdateView):
-    model = Sample
+
+    fields = ['name', 'supplier', 'amount', 'mass', 'MSDS', 'TDS', 'location', 'date_received' ]
+
     fields = ['name', 'supplier', 'amount', 'mass', 'MSDS', 'TDS', 'location', 'date_received']
+
 
     template_name_suffix = '_update_form'
     success_url = '/samples_list'
@@ -269,25 +273,6 @@ class ViewSamples(View):
             except Exception as e:
                 return HttpResponse(e)
         return HttpResponse('form not valid')
-
-
-class ViewSamplePhoto(View):
-    def get(self, request,pk):
-        file = Sample.objects.get(pk=pk)
-        try:
-            return render(request, 'sample_photo.html', {'file':file})
-        except Exception as e:
-            message = 'brak zdjęcia w bazie'
-            return render(request, 'sample_photo.html', {'message':message})
-class ViewSampleBarcode(View):
-    def get(self, request, pk):
-
-        barcode = Sample.objects.get(pk=pk)
-        try:
-            return render(request, 'barcode.html', {'file':barcode})
-        except Exception as e:
-            message = 'brak naklejki w bazie'
-            return render(request, 'barcode.html', {'message': message})
 
 
 
